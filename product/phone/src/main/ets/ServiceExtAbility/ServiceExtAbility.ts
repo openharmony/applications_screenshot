@@ -38,7 +38,7 @@ class ServiceExtAbility extends ServiceExtensionAbility {
                     Log.showInfo(TAG, " dis.width = " + dis.width + " dis.height = " + dis.height)
                     win.resetSize(dis.width * ZOOM_RATIO, dis.height * ZOOM_RATIO).then(() => {
                         Log.showInfo(TAG, " window reset size finish")
-                        win.loadContent('pages/index').then(() => {
+                        win.loadContent(INDEX_PAGE).then(() => {
                             ScreenShotModel.shotScreen();
                             Log.showInfo(TAG, "then begin window loadContent in then! ");
                         })
