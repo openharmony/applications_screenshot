@@ -1,36 +1,41 @@
-# applications_screenshot
+# ScreenShot<a name="ZH-CN_TOPIC_0000001103330836"></a>
 
-#### Description
-{**When you're done, you can delete the content in this README and update the file with details for others getting started with your repository**}
+- [Introduction](#section11660541593)
+    - [Architecture diagram](#section125101832114213)
+- [Contents](#section161941989596)
+- [Instructions](#section123459000)
+- [Related warehouse](#section1371113476307)
 
-#### Software Architecture
-Software architecture description
+## Introduction<a name="section11660541593"></a>
 
-#### Installation
+The ScreenShot application is a preset system application in OpenHarmony, which provides users with the function of capturing the current screen and saving the current picture.
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+## content<a name="section161941989596"></a>
 
-#### Instructions
+```
+/applications/standard/screenshot
+     ├── entry # entry module directory
+     ├── common # Common tool class directory
+     ├── build.gradle # Global build configuration file
+     ├── settings.gradle # Compile the module configuration file
+     ├── LICENSE # License file
+     ├── signature # Certificate file directory
+     ├── features # subcomponent directory
+     │ ├── screenshot # screenshot component
+     │ ├── screenShotModel # Save screenshots, etc.
+     ├── product # ScreenShot general function catalog
+    
+```
+## instructions for use<a name="section123459000"></a>
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+See instructions for use ([Instructions for use](./doc/Instructions.md)）
 
-#### Contribution
+## Related warehouse<a name="section1371113476307"></a>
 
-1.  Fork the repository
-2.  Create Feat_xxx branch
-3.  Commit your code
-4.  Create Pull Request
+system applications
 
+**applications\_screenshot**
+## Signature package <a name="section1371113476308"></a>
+1. For each module under product/phone, configure signingConfigs in build.gradle
 
-#### Gitee Feature
-
-1.  You can use Readme\_XXX.md to support different languages, such as Readme\_en.md, Readme\_zh.md
-2.  Gitee blog [blog.gitee.com](https://blog.gitee.com)
-3.  Explore open source project [https://gitee.com/explore](https://gitee.com/explore)
-4.  The most valuable open source project [GVP](https://gitee.com/gvp)
-5.  The manual of Gitee [https://gitee.com/help](https://gitee.com/help)
-6.  The most popular members  [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+2. Put screenshot.p7b in the signature directory on the corresponding path configured in the build.gradle directory.
