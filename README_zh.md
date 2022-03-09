@@ -26,17 +26,14 @@ ScreenShot应用是OpenHarmony中预置的系统应用，为用户提供截取�
     │       ├── screenShotModel         # 截屏图片保存等   
     ├── product                         # ScreenShot总体功能目录
 ```
-## 使用说明<a name="section123459000"></a>
 
-   参见使用说明（[使用说明](./doc/Instructions.md)）
+## 签名打包<a name="section1371113476308"></a>
+1.针对product/phone下的每一个模块，配置build.gradle中的signingConfigs
+
+2.将signature目录下的screenshot.p7b放在build.gradle目录中配置的相应路径即可
 
 ## 相关仓<a name="section1371113476307"></a>
 
 系统应用
 
 **applications\_screenshot**
-
-## 签名打包<a name="section1371113476308"></a>
- 1.针对product/phone下的每一个模块，配置build.gradle中的signingConfigs
-
- 2.将signature目录下的screenshot.p7b放在build.gradle目录中配置的相应路径即可

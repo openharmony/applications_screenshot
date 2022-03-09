@@ -26,16 +26,14 @@ The ScreenShot application is a preset system application in OpenHarmony, which 
      ├── product # ScreenShot general function catalog
     
 ```
-## instructions for use<a name="section123459000"></a>
 
-See instructions for use ([Instructions for use](./doc/Instructions.md)）
+## Signature package <a name="section1371113476308"></a>
+1. For each module under product/phone, configure signingConfigs in build.gradle
+
+2. Put screenshot.p7b in the signature directory on the corresponding path configured in the build.gradle directory.
 
 ## Related warehouse<a name="section1371113476307"></a>
 
 system applications
 
 **applications\_screenshot**
-## Signature package <a name="section1371113476308"></a>
-1. For each module under product/phone, configure signingConfigs in build.gradle
-
-2. Put screenshot.p7b in the signature directory on the corresponding path configured in the build.gradle directory.
