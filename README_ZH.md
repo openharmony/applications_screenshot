@@ -1,16 +1,14 @@
-# ScreenShot<a name="ZH-CN_TOPIC_0000001103330836"></a>
+# ScreenShot
 
-- [简介](#section11660541593)
-    -   [架构图](#section125101832114213)
-- [目录](#section161941989596)
-- [签名打包](#section1371113476308)
-- [相关仓](#section1371113476307)
-
-## 简介<a name="section11660541593"></a>
+## 简介
 
 ScreenShot应用是OpenHarmony中预置的系统应用，为用户提供截取当前屏幕，并保存当前图片的功能。
 
-## 目录<a name="section161941989596"></a>
+### 架构图
+
+![](figures/zh-cn_image.png)
+
+## 目录
 
 ```
 /applications/standard/screenshot
@@ -26,12 +24,42 @@ ScreenShot应用是OpenHarmony中预置的系统应用，为用户提供截取�
     ├── product                         # ScreenShot总体功能目录
 ```
 
-## 签名打包<a name="section1371113476308"></a>
+## 签名
 1.针对product/phone下的每一个模块，配置build.gradle中的signingConfigs
 
 2.将signature目录下的screenshot.p7b放在build.gradle目录中配置的相应路径即可
 
-## 相关仓<a name="section1371113476307"></a>
+
+## 使用方法
+
+通过create创建截屏小窗口用于显示图片，示例代码如下
+
+```js
+// 创建截屏小窗口用于显示图片
+windowManager.create(context, windowName, WINDOW_TYPE).then((win) => {
+  win.moveTo(0, WINDOW_Y).then(() => {
+    win.resetSize(dis.width * ZOOM_RATIO, dis.height * ZOOM_RATIO).then(() => {
+      win.loadContent(INDEX_PAGE).then(() => {
+      })
+    })
+  })
+}, (error) => {
+  Log.showInfo(TAG, " window createFailed, error.code = " + error.code)
+})
+
+
+// 截取当前屏幕，返回值可以直接显示控件上
+ScreenshotManager.save().then(async (data) => {
+  if (!!data) {
+    show();
+  }
+}).catch((err) => {
+  Log.showInfo(TAG, `save err`);
+})
+    
+```
+
+## 相关仓
 
 系统应用
 
