@@ -23,6 +23,9 @@ import display from '@ohos.display'
 
 const TAG = 'ScreenShot-ScreenShotModel';
 
+const SCREEN_SHOT_PATH = "Screenshots/";
+const SCREENSHOT_PREFIX = "Screenshot";
+const PICTURE_TYPE = ".jpg";
 const SAVE_IMAGE_DELAY = 500;
 const OPTIONS_QUALITY = 100;
 
@@ -49,7 +52,7 @@ export class ScreenShotModel {
   async saveImage(pixelMap, options) {
     const media = mediaLibrary.getMediaLibrary(globalThis.shotScreenContext);
     Log.showInfo(TAG, `saveImage options:${JSON.stringify(options)}`);
-    this.imageFilename = (new Date()).getTime() + '.jpg';
+    this.imageFilename = SCREENSHOT_PREFIX + "_" + (new Date()).getTime() + PICTURE_TYPE;
     var packer = ImageMar.createImagePacker();
     Log.showInfo(TAG, `saveImage packer:${JSON.stringify(packer)}`);
     this.showWindow();
@@ -59,7 +62,7 @@ export class ScreenShotModel {
       media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_IMAGE, (err, rp) => {
         if (rp != undefined) {
           Log.showInfo(TAG, `getPublicDirectory successfull:${JSON.stringify(rp)}`);
-          media.createAsset(mediaLibrary.MediaType.IMAGE, this.imageFilename, rp, (createAssetErr, fileAsset) => {
+          media.createAsset(mediaLibrary.MediaType.IMAGE, this.imageFilename, rp + SCREEN_SHOT_PATH, (createAssetErr, fileAsset) => {
             if (fileAsset != undefined) {
               Log.showInfo(TAG, `createAsset successfull:${JSON.stringify(fileAsset.uri)}`);
               fileAsset.open('Rw').then((fd) => {
