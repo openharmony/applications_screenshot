@@ -35,7 +35,7 @@ Create a small screen capture window to display pictures through create, the sam
 
 ```js
 // Create a small screen capture window to display pictures
-windowManager.create(context, windowName, WINDOW_TYPE).then((win) => {
+window.create(context, windowName, WINDOW_TYPE).then((win) => {
   win.moveTo(0, WINDOW_Y).then(() => {
     win.resetSize(dis.width * ZOOM_RATIO, dis.height * ZOOM_RATIO).then(() => {
       win.loadContent(INDEX_PAGE).then(() => {
@@ -48,7 +48,7 @@ windowManager.create(context, windowName, WINDOW_TYPE).then((win) => {
 
 
 // Take a screenshot of the current screen, the return value can be directly displayed on the control
-ScreenshotManager.save().then(async (data) => {
+Screenshot.save().then(async (data) => {
   if (!!data) {
     show();
   }

@@ -36,7 +36,7 @@ ScreenShot应用是OpenHarmony中预置的系统应用，为用户提供截取�
 
 ```js
 // 创建截屏小窗口用于显示图片
-windowManager.create(context, windowName, WINDOW_TYPE).then((win) => {
+window.create(context, windowName, WINDOW_TYPE).then((win) => {
   win.moveTo(0, WINDOW_Y).then(() => {
     win.resetSize(dis.width * ZOOM_RATIO, dis.height * ZOOM_RATIO).then(() => {
       win.loadContent(INDEX_PAGE).then(() => {
@@ -49,7 +49,7 @@ windowManager.create(context, windowName, WINDOW_TYPE).then((win) => {
 
 
 // 截取当前屏幕，返回值可以直接显示控件上
-ScreenshotManager.save().then(async (data) => {
+Screenshot.save().then(async (data) => {
   if (!!data) {
     show();
   }
