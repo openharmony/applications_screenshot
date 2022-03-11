@@ -6,7 +6,7 @@ ScreenShot应用是OpenHarmony中预置的系统应用，为用户提供截取�
 
 ### 架构图
 
-![](figures/zh-cn_image.png)
+![](figures/cn_diagram.png)
 
 ## 目录
 

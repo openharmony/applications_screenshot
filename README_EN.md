@@ -6,7 +6,7 @@ The ScreenShot application is a preset system application in OpenHarmony, which 
 
 ### Architecture diagram
 
-![](figures/zh-cn_image.png)
+![](figures/en_diagram.png)
 
 ## content
 
