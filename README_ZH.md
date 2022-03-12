@@ -2,11 +2,17 @@
 
 ## 简介
 
-ScreenShot应用是OpenHarmony中预置的系统应用，为用户提供截取当前屏幕，并保存当前图片的功能。
+### 内容介绍
+ScreenShot应用是OpenHarmony中预置的系统应用，为用户提供截取当前屏幕并保存图片的功能。
 
 ### 架构图
 
 ![](figures/cn_diagram.png)
+
+#### feature
+    截屏管理层，提供截屏窗口显示控制，图片保存控制。
+#### common
+    通用工具类，提供日志打印，外部接口管理功能。
 
 ## 目录
 
@@ -23,6 +29,13 @@ ScreenShot应用是OpenHarmony中预置的系统应用，为用户提供截取�
     │       ├── screenShotModel         # 截屏图片保存等   
     ├── product                         # ScreenShot总体功能目录
 ```
+
+###功能描述
+#### features
+    子组件目录，提供截屏窗口显示控制，图片保存控制。
+
+#### product
+    ScreenShot总体功能目录，截屏服务入口。
 
 ## 签名
 1.针对product/phone下的每一个模块，配置build.gradle中的signingConfigs
