@@ -8,6 +8,11 @@ The ScreenShot application is a preset system application in OpenHarmony, which 
 
 ![](figures/en_diagram.png)
 
+#### feature
+    Screen capture management layer, providing screen capture window display control and picture save control.
+#### common
+   A general tool class that provides log printing and external interface management functions.
+
 ## content
 
 ```
@@ -23,6 +28,13 @@ The ScreenShot application is a preset system application in OpenHarmony, which 
      │ ├── screenShotModel # Save screenshots, etc.
      ├── product           # ScreenShot general function catalog
 ```
+
+### Function description
+#### features
+    sub-component directory, provides screen capture window display control, and image save control.
+
+#### product
+    ScreenShot general function catalog, screenshot service entrance.
 
 ## sign
 1. For each module under product/phone, configure signingConfigs in build.gradle
