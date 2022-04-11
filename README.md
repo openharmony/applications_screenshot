@@ -30,7 +30,7 @@ ScreenShot应用是OpenHarmony中预置的系统应用，为用户提供截取�
     ├── product                         # ScreenShot总体功能目录
 ```
 
-###功能描述
+### 功能描述
 #### features
     子组件目录，提供截屏窗口显示控制，图片保存控制。
 
