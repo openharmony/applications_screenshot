@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -12,15 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import Log from '../../../../../../common/src/main/ets/default/Log.ets';
 
-const TAG = 'ScreenShot-App'
-
-export default {
-  onCreate() {
-    Log.showInfo(TAG, 'Application onCreate');
-  },
-  onDestroy() {
-    Log.showInfo(TAG, 'Application onDestroy');
-  },
-}
+// Script for compiling build behavior. It is built in the build plug-in and cannot be modified currently.
+module.exports = require('@ohos/hvigor-ohos-plugin').appTasks

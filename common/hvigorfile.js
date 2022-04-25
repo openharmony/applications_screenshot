@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -12,6 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-include ':phone_entry',':phone', ':common', ':features:screenshot'
-project(':phone_entry').projectDir = new File('./entry/phone')
-project(':phone').projectDir = new File('./product/phone')
+
+// Script for compiling build behavior. It is built in the build plug-in and cannot be modified currently.
+module.exports = require('@ohos/hvigor-ohos-plugin').hapTasks

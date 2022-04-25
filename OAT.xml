@@ -54,6 +54,12 @@
 			</policy>
         </policylist>
 		<filefilterlist>
+			<filefilter name="defaultFilter" desc="Files not to check">
+                <filteritem type="filepath" name=".*.json5" desc="build config file"/>
+				<filteritem type="filepath" name="**/.*.json5" desc="build config file"/>
+				<filteritem type="filepath" name="features/.*/.*.json5" desc="build config file"/>
+				<filteritem type="filepath" name="product/.*/.*.json5" desc="build config file"/>
+            </filefilter>
 			<filefilter name="binaryFileTypePolicyFilter" desc="Filters for binary file policies">
 				<filteritem type="filepath" name="entry/phone/src/main/resources/base/media/.*.png" desc="self developed image"/>
 				<filteritem type="filepath" name="features/screenshot/src/main/resources/base/media/.*.png" desc="self developed image"/>
