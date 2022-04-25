@@ -1,5 +1,5 @@
-/*
- * Copyright (c) 2022 Huawei Device Co., Ltd.
+/**
+ * Copyright (c) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,13 +13,10 @@
  * limitations under the License.
  */
 
-import AbilityStage from "@ohos.application.AbilityStage"
-import Log from '../../../../../common/src/main/ets/default/Log.ets'
+import AbilityStage from '@ohos.application.AbilityStage';
 
-const TAG = "ScreenShot-MainAbilityStage"
-
-export default class MainAbilityStage extends AbilityStage {
-    onCreate() {
-        Log.showInfo(TAG, "onCreate")
-    }
+export default class MyAbilityStage extends AbilityStage {
+  onCreate(): void {
+    console.log('MyAbilityStage onCreate is called');
+  }
 }

@@ -11,6 +11,10 @@
     {
       "name": "button_name",
       "value": "Detail"
+    },
+    {
+      "name": "mainability_description",
+      "value": "ETS_Empty Feature Ability"
     }
   ]
 }

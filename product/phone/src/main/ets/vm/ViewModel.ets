@@ -13,9 +13,9 @@
  * limitations under the License.
  */
 
-import Log from '../../../../../../../common/src/main/ets/default/Log.ets';
+import Log from '../../../../../../common/src/main/ets/default/log';
 import ShotScreenModel, {ScreenShotModel
-}from '../../../../../../../features/screenshot/src/main/ets/com/ohos/model/screenShotModel.ets'
+}from '../../../../../../features/screenshot/src/main/ets/com/ohos/model/screenshotmodel'
 
 const TAG = 'ScreenShot-ViewModel'
 const GALLERY_BUNDLE = 'com.ohos.photos'

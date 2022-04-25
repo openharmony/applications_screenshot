@@ -12,9 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import Log from '../../../../../../../common/src/main/ets/default/Log.ets';
-import Constants from '../common/constants.ets';
-import ViewModel from '../vm/ViewModel.ets';
+import Log from '../../../../../../common/src/main/ets/default/log';
+import Constants from '../common/constants';
+import ViewModel from '../vm/viewmodel';
 
 const TAG = 'ScreenShot-Index';
 
