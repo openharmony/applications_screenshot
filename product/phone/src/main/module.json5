@@ -12,27 +12,22 @@
     "installationFree": false,
     "pages": "$profile:main_pages",
     "uiSyntax": "ets",
-    "abilities": [
+    "extensionAbilities": [
       {
+        "visible": true,
         "skills": [
           {
-            "entities": [
-              "entity.system.home",
-              "flag.home.intent.from.system"
-            ],
             "actions": [
-              "com.ohos.systemui.action.TOGGLE",
-              "action.system.home"
+              "com.ohos.systemui.action.TOGGLE"
             ]
           }
         ],
-        "visible": true,
+        "srcEntrance": "./ets/ServiceExtAbility/ServiceExtAbility.ts",
         "name": "com.ohos.screenshot.ServiceExtAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:app_name",
-        "launchType": "singleton",
-        "srcEntrance": "./ets/ServiceExtAbility/ServiceExtAbility.ts",
+        "type": "service",
         "metadata": [
           {
             "name": "com.ohos.systemui.action.TOGGLE",
