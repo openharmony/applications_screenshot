@@ -26,15 +26,17 @@ const TAG = 'ScreenShot-ScreenShotModel';
 const SCREEN_SHOT_PATH = "Screenshots/";
 const SCREENSHOT_PREFIX = "Screenshot";
 const PICTURE_TYPE = ".jpg";
-const SAVE_IMAGE_DELAY = 500;
+const SAVE_IMAGE_DELAY = 300;
 const OPTIONS_QUALITY = 100;
+const CREATE_WINDOW_DELAY = 300;
 
 export class ScreenShotModel {
-  captureImage: any = null;
+  captureImage: any;
   imageFilename: string = '';
 
-  shotScreen() {
+  async shotScreen() {
     Log.showInfo(TAG, `shotScreen`)
+    await new Promise((resolve) => setTimeout(resolve, CREATE_WINDOW_DELAY));
     ScreenshotManager.save().then(async (data) => {
       Log.showInfo(TAG, `ScreenshotManager.save data:${JSON.stringify(data)}`)
       if (!!data) {
@@ -56,7 +58,7 @@ export class ScreenShotModel {
     var packer = ImageMar.createImagePacker();
     Log.showInfo(TAG, `saveImage packer:${JSON.stringify(packer)}`);
     this.showWindow();
-    await new Promise((resolve) => setTimeout(resolve, SAVE_IMAGE_DELAY))
+    await new Promise((resolve) => setTimeout(resolve, SAVE_IMAGE_DELAY));
     packer.packingFromPixelMap(pixelMap, options).then((jpegData) => {
       Log.showInfo(TAG, `packing jpegData type:` + jpegData.constructor.name + '  value : ' + jpegData);
       media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_IMAGE, (err, rp) => {

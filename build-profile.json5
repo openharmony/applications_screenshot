@@ -1,0 +1,40 @@
+{
+  "app": {
+    "compileSdkVersion": 9,
+    "compatibleSdkVersion": 9,
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default"
+      }
+    ],
+    "signingConfigs": [
+      {
+        "name": "default",
+        "material": {
+          "certpath": "C:/Users/Administrator/AppData/Local/OpenHarmony/OpenHarmonyApplication.cer",
+          "storePassword": "00000016ABE2FA3169DEA4C8550456B888D0FF70F42648A46FC95ED2ADD36C26486E8D941A9D",
+          "keyAlias": "OpenHarmony Application Release",
+          "keyPassword": "00000016036224B5B988AA8E22FE94805292A26974131A2CAFCA9470B71016E7B534E3B5EF05",
+          "profile": "C:/Users/Administrator/AppData/Local/OpenHarmony/screenshot.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "C:/Users/Administrator/AppData/Local/OpenHarmony/OpenHarmony.p12"
+        }
+      }
+    ]
+  },
+  "modules": [
+    {
+      "name": "phone",
+      "srcPath": "./product/phone",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default",
+          ],
+        },
+      ],
+    }
+  ],
+}
