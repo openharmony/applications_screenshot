@@ -59,7 +59,7 @@ export class ScreenShotModel {
     Log.showInfo(TAG, `saveImage packer:${JSON.stringify(packer)}`);
     this.showWindow();
     await new Promise((resolve) => setTimeout(resolve, SAVE_IMAGE_DELAY));
-    packer.packingFromPixelMap(pixelMap, options).then((jpegData) => {
+    packer.packing(pixelMap, options).then((jpegData) => {
       Log.showInfo(TAG, `packing jpegData type:` + jpegData.constructor.name + '  value : ' + jpegData);
       media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_IMAGE, (err, rp) => {
         if (rp != undefined) {

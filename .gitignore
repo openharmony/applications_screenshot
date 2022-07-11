@@ -4,3 +4,5 @@
 /features/screenshot/build/
 /.idea
 /.gradle
+local.properties
+node_modules/

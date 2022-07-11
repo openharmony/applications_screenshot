@@ -6,7 +6,7 @@
     "description": "$string:mainability_description",
     "mainElement": "com.ohos.screenshot.ServiceExtAbility",
     "deviceTypes": [
-      "phone"
+      "default"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,
@@ -31,7 +31,8 @@
         "metadata": [
           {
             "name": "com.ohos.systemui.action.TOGGLE",
-            "value": "\"pluginType\":\"1\",\"clickAction\":\"ability=com.ohos.screenshot|com.ohos.screenshot.ServiceExtAbility\""
+            "value": "\"pluginType\":\"1\",\"clickAction\":\"ability=com.ohos.screenshot|com.ohos.screenshot.ServiceExtAbility\"",
+            "resource": "$profile:main_pages"
           }
         ]
       }

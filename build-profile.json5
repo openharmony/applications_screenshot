@@ -5,20 +5,20 @@
     "products": [
       {
         "name": "default",
-        "signingConfig": "default"
+        "signingConfig": "release"
       }
     ],
     "signingConfigs": [
       {
-        "name": "default",
+        "name": "release",
         "material": {
-          "storePassword": "0000001627D6345E561C5124ADE619EC6DA7A8E3EEA5B00E951C5D2A5BD2CE498615DB7D3D07",
-          "certpath": "C:/Users/Administrator/AppData/Local/OpenHarmony/OpenHarmonyApplication.cer",
+          "storePassword": "",
+          "certpath": "",
           "keyAlias": "OpenHarmony Application Release",
-          "keyPassword": "00000016F7210C76396BEEBBD5EA3B3AC4387176AE2012D8F58DF886BCCFD3588846A9B8FB71",
-          "profile": "C:/Users/Administrator/AppData/Local/OpenHarmony/screenshot.p7b",
+          "keyPassword": "",
+          "profile": ".p7b",
           "signAlg": "SHA256withECDSA",
-          "storeFile": "C:/Users/Administrator/AppData/Local/OpenHarmony/OpenHarmony.p12"
+          "storeFile": ".p12"
         }
       }
     ]
