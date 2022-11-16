@@ -23,6 +23,9 @@
             ]
           }
         ],
+        "permissions": [
+          "ohos.permission.CAPTURE_SCREEN"
+        ],
         "srcEntrance": "./ets/ServiceExtAbility/ServiceExtAbility.ts",
         "name": "com.ohos.screenshot.ServiceExtAbility",
         "icon": "$media:icon",
