@@ -6,7 +6,8 @@
     "description": "$string:mainability_description",
     "mainElement": "com.ohos.screenshot.ServiceExtAbility",
     "deviceTypes": [
-      "default"
+      "default",
+      "tablet"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,
@@ -21,6 +22,9 @@
               "com.ohos.systemui.action.TOGGLE"
             ]
           }
+        ],
+        "permissions": [
+          "ohos.permission.CAPTURE_SCREEN"
         ],
         "srcEntrance": "./ets/ServiceExtAbility/ServiceExtAbility.ts",
         "name": "com.ohos.screenshot.ServiceExtAbility",
@@ -55,6 +59,9 @@
       },
       {
         "name": "ohos.permission.CAPTURE_SCREEN"
+      },
+      {
+        "name": "ohos.permission.START_ABILITIES_FROM_BACKGROUND"
       }
     ]
   }
