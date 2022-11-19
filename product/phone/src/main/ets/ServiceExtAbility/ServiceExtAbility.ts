@@ -13,12 +13,12 @@
  * limitations under the License.
  */
 
-import ServiceExtensionAbility from '@ohos.application.ServiceExtensionAbility'
-import windowManager from '@ohos.window'
-import display from '@ohos.display'
-import Log from '../../../../../../common/src/main/ets/default/Log.ets'
-import Constants from '../../../../../../features/screenshot/src/main/ets/com/ohos/common/constants.ets'
-import ScreenShotModel from '../../../../../../features/screenshot/src/main/ets/com/ohos/model/screenShotModel.ets'
+import ServiceExtensionAbility from '@ohos.application.ServiceExtensionAbility';
+import windowManager from '@ohos.window';
+import display from '@ohos.display';
+import Log from '../../../../../../common/src/main/ets/default/Log';
+import Constants from '../../../../../../features/screenshot/src/main/ets/com/ohos/common/constants';
+import ScreenShotModel from '../../../../../../features/screenshot/src/main/ets/com/ohos/model/screenShotModel';
 
 const TAG = "ScreenShot-ScreenShotServiceAbility";
 const INDEX_PAGE = "pages/index";
