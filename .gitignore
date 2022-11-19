@@ -1,8 +1,5 @@
-/product/phone/build
-/common/build
-/build/
-/features/screenshot/build/
+**/build
+/.hvigor
 /.idea
-/.gradle
-local.properties
-node_modules/
+/local.properties
+/node_modules
