@@ -1,10 +1,11 @@
- {
+{
   "module": {
-    "package": "com.ohos.screenshot",
     "name": "common",
     "type": "har",
     "deviceTypes": [
-      "phone"
+      "default",
+      "tablet"
     ],
     "uiSyntax": "ets"
+  }
 }
