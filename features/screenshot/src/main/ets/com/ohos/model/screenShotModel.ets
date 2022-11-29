@@ -12,14 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import Log from '../../../../../../../../common/src/main/ets/default/Log.ets'
+import Log from '../../../../../../../../common/src/main/ets/default/Log';
 import ScreenshotManager from '@ohos.screenshot';
-import WindowMar  from '@ohos.window'
-import ImageMar from '@ohos.multimedia.image'
-import mediaLibrary from '@ohos.multimedia.mediaLibrary'
+import WindowMar  from '@ohos.window';
+import ImageMar from '@ohos.multimedia.image';
+import mediaLibrary from '@ohos.multimedia.mediaLibrary';
 import FileIo from '@ohos.fileio';
-import Constants from '../common/constants.ets'
-import display from '@ohos.display'
+import Constants from '../common/constants';
+import display from '@ohos.display';
 
 const TAG = 'ScreenShot-ScreenShotModel';
 
