@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import ServiceExtensionAbility from '@ohos.application.ServiceExtensionAbility';
+import ServiceExtensionAbility from '@ohos.app.ability.ServiceExtensionAbility';
 import windowManager from '@ohos.window';
 import display from '@ohos.display';
 import Log from '../../../../../../common/src/main/ets/default/Log';
