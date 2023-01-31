@@ -8,20 +8,7 @@
         "signingConfig": "release"
       }
     ],
-    "signingConfigs": [
-      {
-        "name": "release",
-        "material": {
-          "storePassword": "",
-          "certpath": "",
-          "keyAlias": "OpenHarmony Application Release",
-          "keyPassword": "",
-          "profile": ".p7b",
-          "signAlg": "SHA256withECDSA",
-          "storeFile": ".p12"
-        }
-      }
-    ]
+    "signingConfigs": []
   },
   "modules": [
     {
