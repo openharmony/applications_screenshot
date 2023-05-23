@@ -14,9 +14,12 @@
  */
 
 import AbilityStage from '@ohos.app.ability.AbilityStage';
+import Log from '../../../../../../common/src/main/ets/default/Log';
+
+const TAG = 'MyAbilityStage';
 
 export default class MyAbilityStage extends AbilityStage {
   onCreate(): void {
-    console.log('MyAbilityStage onCreate is called');
+    Log.showInfo(TAG, 'MyAbilityStage onCreate is called');
   }
 }

@@ -1,6 +1,4 @@
 {
   "apiType": 'stageMode',
-  "buildOption": {
-    "arkEnable": true
-  }
+  "buildOption": {}
 }
