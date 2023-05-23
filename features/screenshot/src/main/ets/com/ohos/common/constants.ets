@@ -14,6 +14,5 @@
  */
 
 export default class Constants {
-  static WIN_NAME = "ScreenShotWindow"
-
+  static WIN_NAME = 'ScreenShotWindow';
 }
