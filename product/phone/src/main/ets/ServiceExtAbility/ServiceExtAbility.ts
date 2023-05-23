@@ -26,6 +26,7 @@ const ZOOM_RATIO = 0.4;
 const SHOT_WINDOW_TYPE = 2111;
 const WINDOW_Y = 300;
 
+
 class ServiceExtAbility extends ServiceExtensionAbility {
     onCreate(want) {
         Log.showInfo(TAG, 'api8New onCreate, want:' + want.abilityName);

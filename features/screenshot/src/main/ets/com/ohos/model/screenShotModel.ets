@@ -22,7 +22,6 @@ import Constants from '../common/constants';
 import display from '@ohos.display';
 
 const TAG = 'ScreenShot-ScreenShotModel';
-
 const SCREEN_SHOT_PATH = "Screenshots/";
 const SCREENSHOT_PREFIX = "Screenshot";
 const PICTURE_TYPE = ".jpg";

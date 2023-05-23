@@ -15,6 +15,7 @@
 
 const TAG = 'ScreenShot-Default';
 
+
 /**
  * Basic log class
  */

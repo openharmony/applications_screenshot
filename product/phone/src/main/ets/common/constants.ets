@@ -14,7 +14,6 @@
  */
 
 export default class Constants {
-
   //layout params - Pic
   static FULL_CONTAINER_WIDTH = '100%'
   static FULL_CONTAINER_HEIGHT = '100%'

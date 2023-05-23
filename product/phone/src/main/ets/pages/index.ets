@@ -21,7 +21,7 @@ const TAG = 'ScreenShot-Index';
 @Entry
 @Component
 struct Index {
-  @StorageLink("captureImage") captureImage: any = "";
+  @StorageLink("captureImage") captureImage: any = '';
   @StorageLink("imageFilename") imageFilename: string = "";
 
   build() {
