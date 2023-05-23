@@ -20,41 +20,43 @@ import Log from '../../../../../../common/src/main/ets/default/Log';
 import Constants from '../../../../../../features/screenshot/src/main/ets/com/ohos/common/constants';
 import ScreenShotModel from '../../../../../../features/screenshot/src/main/ets/com/ohos/model/screenShotModel';
 
-const TAG = "ScreenShot-ScreenShotServiceAbility";
-const INDEX_PAGE = "pages/index";
+const TAG = 'ScreenShot-ScreenShotServiceAbility';
+const INDEX_PAGE = 'pages/index';
 const ZOOM_RATIO = 0.4;
-const SHOT_WINDOW_TYPE = 2111;
 const WINDOW_Y = 300;
 
-
 class ServiceExtAbility extends ServiceExtensionAbility {
-    onCreate(want) {
-        Log.showInfo(TAG, 'api8New onCreate, want:' + want.abilityName);
-        globalThis.shotScreenContext = this.context;
-        windowManager.create(this.context, Constants.WIN_NAME, SHOT_WINDOW_TYPE).then((win) => {
-            Log.showInfo(TAG, "create window finish!")
-            win.moveTo(0, WINDOW_Y).then(() => {
-                Log.showInfo(TAG, " window moveTo finish")
-                display.getDefaultDisplay().then(dis => {
-                    Log.showInfo(TAG, " dis.width = " + dis.width + " dis.height = " + dis.height)
-                    win.resetSize(dis.width * ZOOM_RATIO, dis.height * ZOOM_RATIO).then(() => {
-                        Log.showInfo(TAG, " window reset size finish")
-                        win.loadContent(INDEX_PAGE).then(() => {
-                            ScreenShotModel.shotScreen();
-                            Log.showInfo(TAG, "then begin window loadContent in then! ");
-                        })
-                    })
-                })
-            })
-        }, (error) => {
-            Log.showInfo(TAG, " window createFailed, error.code = " + error.code)
+  onCreate(want) {
+    Log.showInfo(TAG, 'api8New onCreate, want:' + want.abilityName);
+    globalThis.shotScreenContext = this.context;
+    const windowConfig = {
+      name: Constants.WIN_NAME,
+      windowType: windowManager.WindowType.TYPE_SCREENSHOT,
+      ctx: this.context,
+    };
+    windowManager.createWindow(windowConfig).then((win) => {
+      Log.showInfo(TAG, 'create window finish');
+      win.moveWindowTo(0, WINDOW_Y).then(() => {
+        Log.showInfo(TAG, 'window move finish');
+        const dis = display.getDefaultDisplaySync();
+        Log.showInfo(TAG, 'dis.width = ' + dis.width + ' dis.height = ' + dis.height)
+        win.resize(dis.width * ZOOM_RATIO, dis.height * ZOOM_RATIO).then(() => {
+          Log.showInfo(TAG, 'window reset size finish');
+          win.setUIContent(INDEX_PAGE).then(() => {
+            ScreenShotModel.shotScreen();
+            Log.showInfo(TAG, 'then begin window loadContent in then! ');
+          })
         })
-        Log.showInfo(TAG, " after window create")
-    }
+      })
+    }, (error) => {
+      Log.showInfo(TAG, 'window createFailed, error.code = ' + error.code);
+    })
+    Log.showInfo(TAG, 'after window create');
+  }
 
-    onDestroy() {
-        Log.showInfo(TAG, `onDestroy`);
-    }
+  onDestroy() {
+    Log.showInfo(TAG, 'onDestroy');
+  }
 }
 
-export default ServiceExtAbility
+export default ServiceExtAbility;
