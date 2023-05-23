@@ -21,8 +21,8 @@ const TAG = 'ScreenShot-Index';
 @Entry
 @Component
 struct Index {
-  @StorageLink("captureImage") captureImage: any = '';
-  @StorageLink("imageFilename") imageFilename: string = "";
+  @StorageLink('captureImage') captureImage: string = '';
+  @StorageLink('imageFilename') imageFilename: string = '';
 
   build() {
     Stack({ alignContent: Alignment.Bottom }) {
@@ -33,7 +33,7 @@ struct Index {
       .width(Constants.FULL_CONTAINER_WIDTH)
       .height(Constants.FULL_CONTAINER_HEIGHT)
       .onClick(() => {
-        ViewModel.StartPhotosAbility(this.imageFilename)
+        ViewModel.StartPhotosAbility(this.imageFilename);
       })
     }
     .width(Constants.FULL_CONTAINER_WIDTH)
@@ -41,7 +41,7 @@ struct Index {
   }
 
   aboutToAppear() {
-    Log.showInfo(TAG, `aboutToAppear`)
+    Log.showInfo(TAG, 'aboutToAppear');
     setTimeout(ViewModel.CloseShotScreen, Constants.interval);
   }
 }
