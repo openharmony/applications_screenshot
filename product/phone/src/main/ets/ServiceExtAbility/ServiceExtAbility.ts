@@ -39,7 +39,7 @@ class ServiceExtAbility extends ServiceExtensionAbility {
       win.moveWindowTo(0, WINDOW_Y).then(() => {
         Log.showInfo(TAG, 'window move finish');
         const dis = display.getDefaultDisplaySync();
-        Log.showInfo(TAG, 'dis.width = ' + dis.width + ' dis.height = ' + dis.height)
+        Log.showInfo(TAG, 'dis.width = ' + dis.width + ' dis.height = ' + dis.height);
         win.resize(dis.width * ZOOM_RATIO, dis.height * ZOOM_RATIO).then(() => {
           Log.showInfo(TAG, 'window reset size finish');
           win.setUIContent(INDEX_PAGE).then(() => {
