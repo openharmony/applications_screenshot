@@ -26,7 +26,7 @@ const ZOOM_RATIO = 0.4;
 const WINDOW_Y = 300;
 
 class ServiceExtAbility extends ServiceExtensionAbility {
-  onCreate(want) {
+  onCreate(want): void {
     Log.showInfo(TAG, 'api8New onCreate, want:' + want.abilityName);
     globalThis.shotScreenContext = this.context;
     const windowConfig = {
@@ -45,16 +45,16 @@ class ServiceExtAbility extends ServiceExtensionAbility {
           win.setUIContent(INDEX_PAGE).then(() => {
             ScreenShotModel.shotScreen();
             Log.showInfo(TAG, 'then begin window loadContent in then! ');
-          })
-        })
-      })
+          });
+        });
+      });
     }, (error) => {
       Log.showInfo(TAG, 'window createFailed, error.code = ' + error.code);
-    })
+    });
     Log.showInfo(TAG, 'after window create');
   }
 
-  onDestroy() {
+  onDestroy(): void {
     Log.showInfo(TAG, 'onDestroy');
   }
 }
