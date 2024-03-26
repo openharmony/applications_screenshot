@@ -32,8 +32,8 @@ const OPTIONS_QUALITY = 100;
 const CREATE_WINDOW_DELAY = 300;
 
 export class ScreenShotModel {
-  captureImage: ImageMar.PixelMap;
-  imageFilename: string = '';
+  private captureImage: ImageMar.PixelMap;
+  private imageFileName: string = '';
 
   async shotScreen() {
     Log.showInfo(TAG, 'shotScreen');
@@ -56,7 +56,7 @@ export class ScreenShotModel {
   async saveImage(pixelMap, options) {
     const media = mediaLibrary.getMediaLibrary(globalThis.shotScreenContext);
     Log.showInfo(TAG, `saveImage options:${JSON.stringify(options)}`);
-    this.imageFilename = SCREENSHOT_PREFIX + '_' + (new Date()).getTime() + PICTURE_TYPE;
+    this.imageFileName = SCREENSHOT_PREFIX + '_' + (new Date()).getTime() + PICTURE_TYPE;
     var packer = ImageMar.createImagePacker();
     Log.showInfo(TAG, `saveImage packer:${JSON.stringify(packer)}`);
     this.showWindow();
@@ -66,26 +66,27 @@ export class ScreenShotModel {
       media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_IMAGE, (err, rp) => {
         if (rp != undefined) {
           Log.showInfo(TAG, `getPublicDirectory successful:${JSON.stringify(rp)}`);
-          media.createAsset(mediaLibrary.MediaType.IMAGE, this.imageFilename, rp + SCREEN_SHOT_PATH, (createAssetErr, fileAsset) => {
-            if (fileAsset != undefined) {
-              Log.showInfo(TAG, `createAsset successful:${JSON.stringify(fileAsset.uri)}`);
-              fileAsset.open('rw').then((fd) => {
-                if (fd == undefined) {
-                  Log.showInfo(TAG, 'fileAsset open fail');
-                  return;
-                }
-                Log.showInfo(TAG, `open successful, fd = ${JSON.stringify(fd)}`);
-                FileIo.write(fd, jpegData).then(num => {
-                  Log.showInfo(TAG, `FileIo write, num = ${JSON.stringify(num)}`);
-                  fileAsset.close(fd).then(() => {
-                    Log.showInfo(TAG, 'FileIo close,successful');
-                  })
+          media.createAsset(mediaLibrary.MediaType.IMAGE, this.imageFileName, rp + SCREEN_SHOT_PATH,
+            (createAssetErr, fileAsset) => {
+              if (fileAsset != undefined) {
+                Log.showInfo(TAG, `createAsset successful:${JSON.stringify(fileAsset.uri)}`);
+                fileAsset.open('rw').then((fd) => {
+                  if (fd == undefined) {
+                    Log.showInfo(TAG, 'fileAsset open fail');
+                    return;
+                  }
+                  Log.showInfo(TAG, `open successful, fd = ${JSON.stringify(fd)}`);
+                  FileIo.write(fd, jpegData).then(num => {
+                    Log.showInfo(TAG, `FileIo write, num = ${JSON.stringify(num)}`);
+                    fileAsset.close(fd).then(() => {
+                      Log.showInfo(TAG, 'FileIo close,successful');
+                    })
+                  });
                 });
-              });
-            } else {
-              Log.showInfo(TAG, 'createAsset fail');
-            }
-          })
+              } else {
+                Log.showInfo(TAG, 'createAsset fail');
+              }
+            })
         } else {
           Log.showInfo(TAG, 'getPublicDirectory fail');
         }
