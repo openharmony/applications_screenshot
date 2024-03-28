@@ -15,12 +15,7 @@
 
 export default class Constants {
   //layout params - Pic
-  static FULL_CONTAINER_WIDTH = '100%';
-  static FULL_CONTAINER_HEIGHT = '100%';
-
-  static BUTTON_WIDTH = 150;
-  static BUTTON_HEIGHT = 80;
-
-  //The interval
-  static interval = 5000;
+  public static FULL_CONTAINER_WIDTH = '100%';
+  public static FULL_CONTAINER_HEIGHT = '100%';
+  public static interval = 5000;
 }

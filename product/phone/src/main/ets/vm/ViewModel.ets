@@ -14,24 +14,22 @@
  */
 
 import Log from '../../../../../../common/src/main/ets/default/Log';
-import ShotScreenModel, {ScreenShotModel
-}from '../../../../../../features/screenshot/src/main/ets/com/ohos/model/screenShotModel';
+import ShotScreenModel from '../../../../../../features/screenshot/src/main/ets/com/ohos/model/screenShotModel';
 
 const TAG = 'ScreenShot-ViewModel'
 const GALLERY_BUNDLE = 'com.ohos.photos'
 const GALLERY_ABILITY = 'com.ohos.photos.MainAbility'
 
 export class ViewModel {
-
   constructor() {
     this.ViewModelInit()
   }
 
-  ViewModelInit(): void{
+  ViewModelInit(): void {
     Log.showInfo(TAG, 'ViewModelInit');
   }
 
-  StartPhotosAbility(imageFilename): void{
+  StartPhotosAbility(imageFilename): void {
     Log.showInfo(TAG, `StartPhotosAbility imageFilename:${imageFilename}`);
     let wantData = {
       bundleName: GALLERY_BUNDLE,
@@ -45,7 +43,7 @@ export class ViewModel {
     ShotScreenModel.dismiss();
   }
 
-  CloseShotScreen(): void{
+  CloseShotScreen(): void {
     //close window
     ShotScreenModel.dismiss();
   }
