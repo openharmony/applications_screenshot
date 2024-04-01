@@ -31,7 +31,7 @@ export default class Log {
      * @param {string} tag - Page or class tag
      * @param {string} log - Log needs to be printed
      */
-    static showInfo(tag, ...args: any[]) {
+    static showInfo(tag: string, ...args: string[]) {
         hiLog.info(DOMAIN, PREFIX, FORMAT, `tag: ${tag} --> ${args.join(SEPARATOR)}`);
     }
 
@@ -41,7 +41,7 @@ export default class Log {
      * @param {string} tag - Page or class tag
      * @param {string} log - Log needs to be printed
      */
-    static showDebug(tag, ...args: any[]) {
+    static showDebug(tag: string, ...args: string[]) {
         hiLog.debug(DOMAIN, PREFIX, FORMAT, `tag: ${tag} --> ${args.join(SEPARATOR)}`);
     }
 
@@ -51,8 +51,7 @@ export default class Log {
      * @param {string} tag - Page or class tag
      * @param {string} log - Log needs to be printed
      */
-    static showError(tag, ...args: any[]) {
+    static showError(tag: string, ...args: string[]) {
         hiLog.error(DOMAIN, PREFIX, FORMAT, `tag: ${tag} --> ${args.join(SEPARATOR)}`);
     }
-
 }
