@@ -15,29 +15,30 @@
 
 import Log from '../../../../../../common/src/main/ets/default/Log';
 import ShotScreenModel from '../../../../../../features/screenshot/src/main/ets/com/ohos/model/screenShotModel';
+import Want from '@ohos.app.ability.Want';
 
-const TAG = 'ScreenShot-ViewModel'
-const GALLERY_BUNDLE = 'com.ohos.photos'
-const GALLERY_ABILITY = 'com.ohos.photos.MainAbility'
+const TAG = 'ScreenShot-ViewModel';
+const GALLERY_BUNDLE = 'com.ohos.photos';
+const GALLERY_ABILITY = 'com.ohos.photos.MainAbility';
 
 export class ViewModel {
   constructor() {
-    this.ViewModelInit()
+    this.ViewModelInit();
   }
 
   ViewModelInit(): void {
     Log.showInfo(TAG, 'ViewModelInit');
   }
 
-  StartPhotosAbility(imageFilename): void {
-    Log.showInfo(TAG, `StartPhotosAbility imageFilename:${imageFilename}`);
-    let wantData = {
+  StartPhotosAbility(imageFileName: string): void {
+    Log.showInfo(TAG, `StartPhotosAbility imageFileName:${imageFileName}`);
+    const wantData: Want = {
       bundleName: GALLERY_BUNDLE,
       abilityName: GALLERY_ABILITY,
       parameters: {
-        uri: imageFilename
+        uri: imageFileName
       }
-    }
+    };
     ShotScreenModel.openAbility(wantData);
     //close window
     ShotScreenModel.dismiss();

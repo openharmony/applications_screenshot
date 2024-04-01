@@ -19,6 +19,8 @@ import display from '@ohos.display';
 import Log from '../../../../../../common/src/main/ets/default/Log';
 import Constants from '../../../../../../features/screenshot/src/main/ets/com/ohos/common/constants';
 import ScreenShotModel from '../../../../../../features/screenshot/src/main/ets/com/ohos/model/screenShotModel';
+import Want from '@ohos.app.ability.Want';
+import { BusinessError } from '@ohos.base';
 
 const TAG = 'ScreenShot-ScreenShotServiceAbility';
 const INDEX_PAGE = 'pages/index';
@@ -26,10 +28,10 @@ const ZOOM_RATIO = 0.4;
 const WINDOW_Y = 300;
 
 class ServiceExtAbility extends ServiceExtensionAbility {
-  onCreate(want): void {
+  onCreate(want: Want): void {
     Log.showInfo(TAG, 'api8New onCreate, want:' + want.abilityName);
     globalThis.shotScreenContext = this.context;
-    const windowConfig = {
+    const windowConfig: windowManager.Configuration = {
       name: Constants.WIN_NAME,
       windowType: windowManager.WindowType.TYPE_SCREENSHOT,
       ctx: this.context,
@@ -48,7 +50,7 @@ class ServiceExtAbility extends ServiceExtensionAbility {
           });
         });
       });
-    }, (error) => {
+    }, (error: BusinessError) => {
       Log.showInfo(TAG, 'window createFailed, error.code = ' + error.code);
     });
     Log.showInfo(TAG, 'after window create');

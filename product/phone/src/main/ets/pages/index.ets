@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import Log from '../../../../../../common/src/main/ets/default/Log';
 import Constants from '../common/constants';
 import ViewModel from '../vm/ViewModel';
@@ -28,16 +29,16 @@ struct Index {
     Stack({ alignContent: Alignment.Bottom }) {
       Column() {
         Image(this.captureImage)
-          .border({ color: Color.White, radius: 8, width: 8 })
+          .border({ color: Color.White, radius: 8, width: 8 });
       }
       .width(Constants.FULL_CONTAINER_WIDTH)
       .height(Constants.FULL_CONTAINER_HEIGHT)
       .onClick(() => {
         ViewModel.StartPhotosAbility(this.imageFilename);
-      })
+      });
     }
     .width(Constants.FULL_CONTAINER_WIDTH)
-    .height(Constants.FULL_CONTAINER_HEIGHT)
+    .height(Constants.FULL_CONTAINER_HEIGHT);
   }
 
   aboutToAppear() {

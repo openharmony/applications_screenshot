@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+import { BusinessError } from '@ohos.base';
 import ScreenshotManager from '@ohos.screenshot';
 import WindowMar from '@ohos.window';
 import ImageMar from '@ohos.multimedia.image';
@@ -21,6 +22,7 @@ import FileIo from '@ohos.fileio';
 import display from '@ohos.display';
 import Constants from '../common/constants';
 import Log from '../../../../../../../../common/src/main/ets/default/Log';
+import Want from '@ohos.app.ability.Want';
 
 const TAG = 'ScreenShot-ScreenShotModel';
 
@@ -32,35 +34,35 @@ const OPTIONS_QUALITY = 100;
 const CREATE_WINDOW_DELAY = 300;
 
 export class ScreenShotModel {
-  private captureImage: ImageMar.PixelMap;
+  private captureImage: ImageMar.PixelMap | undefined = undefined;
   private imageFileName: string = '';
 
   async shotScreen() {
     Log.showInfo(TAG, 'shotScreen');
-    await new Promise((resolve) => setTimeout(resolve, CREATE_WINDOW_DELAY));
+    await new Promise<number>((resolve) => setTimeout(resolve, CREATE_WINDOW_DELAY));
     ScreenshotManager.save().then(async (data) => {
-      Log.showInfo(TAG, `ScreenshotManager.save data:${JSON.stringify(data)}`)
+      Log.showInfo(TAG, `ScreenshotManager.save data:${JSON.stringify(data)}`);
       if (!!data) {
         this.captureImage = data;
         AppStorage.Set('captureImage', data);
         this.saveImage(this.captureImage, {
-          format: ['image/jpeg'],
+          format: 'image/jpeg',
           quality: OPTIONS_QUALITY,
         });
       }
-    }).catch((err) => {
+    }).catch((err: BusinessError) => {
       Log.showInfo(TAG, `ScreenshotManager.save err:${JSON.stringify(err)}`);
-    })
+    });
   }
 
-  async saveImage(pixelMap, options) {
+  async saveImage(pixelMap: ImageMar.PixelMap, options: ImageMar.PackingOption) {
     const media = mediaLibrary.getMediaLibrary(globalThis.shotScreenContext);
     Log.showInfo(TAG, `saveImage options:${JSON.stringify(options)}`);
     this.imageFileName = SCREENSHOT_PREFIX + '_' + (new Date()).getTime() + PICTURE_TYPE;
-    var packer = ImageMar.createImagePacker();
+    const packer = ImageMar.createImagePacker();
     Log.showInfo(TAG, `saveImage packer:${JSON.stringify(packer)}`);
     this.showWindow();
-    await new Promise((resolve) => setTimeout(resolve, SAVE_IMAGE_DELAY));
+    await new Promise<number>((resolve) => setTimeout(resolve, SAVE_IMAGE_DELAY));
     packer.packing(pixelMap, options).then((jpegData) => {
       Log.showInfo(TAG, 'packing jpegData type:' + jpegData.constructor.name + '  value : ' + jpegData);
       media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_IMAGE, (err, rp) => {
@@ -80,17 +82,17 @@ export class ScreenShotModel {
                     Log.showInfo(TAG, `FileIo write, num = ${JSON.stringify(num)}`);
                     fileAsset.close(fd).then(() => {
                       Log.showInfo(TAG, 'FileIo close,successful');
-                    })
+                    });
                   });
                 });
               } else {
                 Log.showInfo(TAG, 'createAsset fail');
               }
-            })
+            });
         } else {
           Log.showInfo(TAG, 'getPublicDirectory fail');
         }
-      })
+      });
     });
   }
 
@@ -99,24 +101,24 @@ export class ScreenShotModel {
     WindowMar.find(Constants.WIN_NAME).then((win) => {
       win.show(() => {
         Log.showInfo(TAG, 'window show');
-      })
-    })
+      });
+    });
   }
 
   dismiss(): void {
     Log.showInfo(TAG, 'dismiss');
     //close ability
-    globalThis.shotScreenContext.terminateSelf((err, data) => {
-      Log.showInfo(TAG, `terminateSelf finish err:${err} data:${JSON.stringify(data)}`);
+    globalThis.shotScreenContext.terminateSelf((err: BusinessError) => {
+      Log.showInfo(TAG, `terminateSelf finish err:${err}`);
       WindowMar.find(Constants.WIN_NAME).then((win) => {
         win.destroy(() => {
           Log.showInfo(TAG, 'destroy the window finish');
-        })
-      })
-    })
+        });
+      });
+    });
   }
 
-  openAbility(wantData) {
+  openAbility(wantData: Want) {
     Log.showInfo(TAG, `openAbility want:${JSON.stringify(wantData)}`);
     globalThis.shotScreenContext.startAbility(wantData);
   }
