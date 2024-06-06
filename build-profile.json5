@@ -4,11 +4,14 @@
       {
         "name": "default",
         "signingConfig": "release",
-        "compileSdkVersion": 12,
-        "compatibleSdkVersion": 9
+        "compileSdkVersion": 11,
+        "compatibleSdkVersion": 11,
+        "targetSdkVersion": 11,
+        "runtimeOS": "OpenHarmony",
       }
     ],
-    "signingConfigs": []
+    "signingConfigs": [
+    ]
   },
   "modules": [
     {

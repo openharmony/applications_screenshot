@@ -23,6 +23,9 @@ import display from '@ohos.display';
 import Constants from '../common/constants';
 import Log from '../../../../../../../../common/src/main/ets/default/Log';
 import Want from '@ohos.app.ability.Want';
+import userFileManager from '@ohos.filemanagement.userFileManager';
+import common from '@ohos.app.ability.common';
+import file from '@ohos.file.fs';
 
 const TAG = 'ScreenShot-ScreenShotModel';
 
@@ -56,44 +59,41 @@ export class ScreenShotModel {
   }
 
   async saveImage(pixelMap: ImageMar.PixelMap, options: ImageMar.PackingOption) {
-    const media = mediaLibrary.getMediaLibrary(globalThis.shotScreenContext);
-    Log.showInfo(TAG, `saveImage options:${JSON.stringify(options)}`);
-    this.imageFileName = SCREENSHOT_PREFIX + '_' + (new Date()).getTime() + PICTURE_TYPE;
-    const packer = ImageMar.createImagePacker();
-    Log.showInfo(TAG, `saveImage packer:${JSON.stringify(packer)}`);
-    this.showWindow();
-    await new Promise<number>((resolve) => setTimeout(resolve, SAVE_IMAGE_DELAY));
-    packer.packing(pixelMap, options).then((jpegData) => {
-      Log.showInfo(TAG, 'packing jpegData type:' + jpegData.constructor.name + '  value : ' + jpegData);
-      media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_IMAGE, (err, rp) => {
-        if (rp != undefined) {
-          Log.showInfo(TAG, `getPublicDirectory successful:${JSON.stringify(rp)}`);
-          media.createAsset(mediaLibrary.MediaType.IMAGE, this.imageFileName, rp + SCREEN_SHOT_PATH,
-            (createAssetErr, fileAsset) => {
-              if (fileAsset != undefined) {
-                Log.showInfo(TAG, `createAsset successful:${JSON.stringify(fileAsset.uri)}`);
-                fileAsset.open('rw').then((fd) => {
-                  if (fd == undefined) {
-                    Log.showInfo(TAG, 'fileAsset open fail');
-                    return;
-                  }
-                  Log.showInfo(TAG, `open successful, fd = ${JSON.stringify(fd)}`);
-                  FileIo.write(fd, jpegData).then(num => {
-                    Log.showInfo(TAG, `FileIo write, num = ${JSON.stringify(num)}`);
-                    fileAsset.close(fd).then(() => {
-                      Log.showInfo(TAG, 'FileIo close,successful');
-                    });
-                  });
-                });
-              } else {
-                Log.showInfo(TAG, 'createAsset fail');
-              }
-            });
-        } else {
-          Log.showInfo(TAG, 'getPublicDirectory fail');
-        }
-      });
-    });
+    let fileAsset: userFileManager.FileAsset | undefined = undefined;
+    let fd: number | undefined = undefined;
+
+    const context = globalThis.shotScreenContext as common.ServiceExtensionContext;
+    try {
+      const userFileMgr = userFileManager.getUserFileMgr(context);
+      this.imageFileName = SCREENSHOT_PREFIX + '_' + (new Date()).getTime() + PICTURE_TYPE;
+      Log.showInfo(TAG, `imageName: ${this.imageFileName}`);
+
+      const packer = ImageMar.createImagePacker();
+      this.showWindow();
+      await new Promise<number>((resolve) => setTimeout(resolve, SAVE_IMAGE_DELAY));
+      const packedImg = await packer.packing(pixelMap, options);
+
+      const createOption: userFileManager.PhotoCreateOptions = {
+        subType: userFileManager.PhotoSubType.SCREENSHOT,
+      };
+      fileAsset = await userFileMgr.createPhotoAsset(this.imageFileName, createOption);
+
+      AppStorage.setOrCreate('imageUri', fileAsset.uri);
+      Log.showInfo(TAG, `fileAsset uri: ${fileAsset.uri}`);
+
+      fd = await fileAsset.open('w');
+      await file.write(fd, packedImg);
+      await file.fsync(fd);
+      AppStorage.setOrCreate('imageFilename', this.imageFileName);
+      Log.showInfo(TAG, `SaveImage success`);
+    } catch (error) {
+      Log.showInfo(TAG, `SaveImage failed, cause: ${error}`);
+    } finally {
+      if (fileAsset && fd !== undefined) {
+        await fileAsset.close(fd);
+        Log.showInfo(TAG, `FileIo close, successful`);
+      }
+    }
   }
 
   showWindow() {
