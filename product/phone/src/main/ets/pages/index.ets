@@ -22,7 +22,7 @@ const TAG = 'ScreenShot-Index';
 @Component
 struct Index {
   @StorageLink('captureImage') captureImage: string = '';
-  @StorageLink('imageFilename') imageFilename: string = '';
+  @StorageLink('imageFilename') imageFilename: string = 'photodetail';
 
   build() {
     Stack({ alignContent: Alignment.Bottom }) {
