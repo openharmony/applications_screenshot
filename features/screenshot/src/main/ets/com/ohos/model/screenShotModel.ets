@@ -17,9 +17,6 @@ import { BusinessError } from '@ohos.base';
 import ScreenshotManager from '@ohos.screenshot';
 import WindowMar from '@ohos.window';
 import ImageMar from '@ohos.multimedia.image';
-import mediaLibrary from '@ohos.multimedia.mediaLibrary';
-import FileIo from '@ohos.fileio';
-import display from '@ohos.display';
 import Constants from '../common/constants';
 import Log from '../../../../../../../../common/src/main/ets/default/Log';
 import Want from '@ohos.app.ability.Want';
@@ -67,7 +64,6 @@ export class ScreenShotModel {
       const userFileMgr = userFileManager.getUserFileMgr(context);
       this.imageFileName = SCREENSHOT_PREFIX + '_' + (new Date()).getTime() + PICTURE_TYPE;
       Log.showInfo(TAG, `imageName: ${this.imageFileName}`);
-      Log.showInfo(TAG, `add: this is a test`);
 
       const packer = ImageMar.createImagePacker();
       this.showWindow();
