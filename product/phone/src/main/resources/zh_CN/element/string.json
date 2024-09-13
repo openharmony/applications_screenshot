@@ -27,6 +27,22 @@
     {
       "name": "write_media_reason",
       "value": "Screenshot apps need to write media files"
+    },
+    {
+      "name": "avscreencapture_privacy_window_title",
+      "value": "录屏投屏管理"
+    },
+    {
+      "name": "avscreencapture_privacy_window_content",
+      "value": "\"%s\"将录制/投射您屏幕上显示的内容和系统声音。请注意保护个人敏感信息，如密码、付款信息、照片、录像、聊天记录等。"
+    },
+    {
+      "name": "avscreencapture_privacy_window_cancel",
+      "value": "取消"
+    },
+    {
+      "name": "avscreencapture_privacy_window_agree",
+      "value": "确定"
     }
   ]
 }
