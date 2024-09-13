@@ -181,5 +181,5 @@ export struct DialogPage {
     }
   }
 
-  build(){}
+  build() {}
 }
