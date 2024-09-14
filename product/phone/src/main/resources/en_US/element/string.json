@@ -38,11 +38,11 @@
     },
     {
       "name": "avscreencapture_privacy_window_cancel",
-      "value": "Cancel"
+      "value": "Deny"
     },
     {
       "name": "avscreencapture_privacy_window_agree",
-      "value": "Agree"
+      "value": "Allow"
     }
   ]
 }

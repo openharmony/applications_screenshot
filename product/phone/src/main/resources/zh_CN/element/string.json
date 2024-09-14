@@ -38,11 +38,11 @@
     },
     {
       "name": "avscreencapture_privacy_window_cancel",
-      "value": "取消"
+      "value": "不允许"
     },
     {
       "name": "avscreencapture_privacy_window_agree",
-      "value": "确定"
+      "value": "允许"
     }
   ]
 }

@@ -42,6 +42,7 @@ export default class DialogAbility extends UIExtensionAbility {
   }
 
   onSessionCreate(want: Want, session: UIExtensionContentSession): void {
+    Log.showInfo(TAG, 'onSessionCreate');
     globalThis.dialogContext = this.context;
     globalThis.dialogWant = want;
     globalThis.dialogSession = session;
