@@ -21,6 +21,12 @@ import { BusinessError } from '@ohos.base';
 
 const TAG = 'AVScreenCapture-DiaLogUIExtensionAbility';
 
+class JsonData {
+  public choice: string = 'false'
+  public displayId: number | null = -1
+  public missionId: number | null = -1
+}
+
 export default class DialogAbility extends UIExtensionAbility {
   onCreate(): void {
     Log.showInfo(TAG, 'DialogAbility onCreate');
@@ -37,8 +43,13 @@ export default class DialogAbility extends UIExtensionAbility {
   }
 
   onDestroy(): void {
+    const jsonData: JsonData = {
+      choice: globalThis.userChoice,
+      displayId: -1,
+      missionId: -1
+    }
     Log.showInfo(TAG, `Report user choice sessionId(${globalThis.sessionId}), userChoice(${globalThis.userChoice})`);
-    media.reportAVScreenCaptureUserChoice(Number(globalThis.sessionId), globalThis.userChoice);
+    media.reportAVScreenCaptureUserChoice(Number(globalThis.sessionId), JSON.stringify(jsonData));
   }
 
   onSessionCreate(want: Want, session: UIExtensionContentSession): void {
