@@ -39,6 +39,12 @@
             "resource": "$profile:main_pages"
           }
         ]
+      },
+      {
+        "name": "com.ohos.screenshot.DialogAbility",
+        "srcEntry": "./ets/PrivacyDialog/DialogAbility.ets",
+        "visible": true,
+        "type": "sys/commonUI"
       }
     ],
     "requestPermissions": [
