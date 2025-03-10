@@ -40,15 +40,19 @@ class ServiceExtAbility extends ServiceExtensionAbility {
       Log.showInfo(TAG, 'create window finish');
       win.moveWindowTo(0, WINDOW_Y).then(() => {
         Log.showInfo(TAG, 'window move finish');
-        const dis = display.getDefaultDisplaySync();
-        Log.showInfo(TAG, 'dis.width = ' + dis.width + ' dis.height = ' + dis.height);
-        win.resize(dis.width * ZOOM_RATIO, dis.height * ZOOM_RATIO).then(() => {
-          Log.showInfo(TAG, 'window reset size finish');
-          win.setUIContent(INDEX_PAGE).then(() => {
-            ScreenShotModel.shotScreen();
-            Log.showInfo(TAG, 'then begin window loadContent in then! ');
+        try {
+          const dis = display.getDefaultDisplaySync();
+          Log.showInfo(TAG, 'dis.width = ' + dis.width + ' dis.height = ' + dis.height);
+          win.resize(dis.width * ZOOM_RATIO, dis.height * ZOOM_RATIO).then(() => {
+            Log.showInfo(TAG, 'window reset size finish');
+            win.setUIContent(INDEX_PAGE).then(() => {
+              ScreenShotModel.shotScreen();
+              Log.showInfo(TAG, 'then begin window loadContent in then! ');
+            });
           });
-        });
+        } catch (error) {
+          Log.showError(TAG, 'getDefaultDisplaySync error: ' + error?.message);
+        }
       });
     }, (error: BusinessError) => {
       Log.showInfo(TAG, 'window createFailed, error.code = ' + error.code);
