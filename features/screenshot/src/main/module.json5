@@ -3,7 +3,7 @@
     "name": "screenshot",
     "type": "har",
     "deviceTypes": [
-      "default",
+      "phone",
       "tablet"
     ],
     "uiSyntax": "ets"
