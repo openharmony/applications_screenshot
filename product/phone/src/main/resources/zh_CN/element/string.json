@@ -41,6 +41,10 @@
       "value": "不允许"
     },
     {
+      "name": "write_imagevideo_desc",
+      "value": "该权限用于将截屏保存至媒体库"
+    },
+    {
       "name": "avscreencapture_privacy_window_agree",
       "value": "允许"
     }
