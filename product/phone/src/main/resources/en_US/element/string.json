@@ -41,6 +41,10 @@
       "value": "Deny"
     },
     {
+      "name":"write_imagevideo_desc",
+      "value":"Allows user to save screenshots to the media library"
+    },
+    {
       "name": "avscreencapture_privacy_window_agree",
       "value": "Allow"
     }
