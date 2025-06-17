@@ -39,6 +39,7 @@ export class ScreenShotModel {
 
   async shotScreen() {
     Log.showInfo(TAG, 'shotScreen');
+    WindowMar.notifyScreenshotEvent(WindowMar.ScreenshotEventType.SYSTEM_SCREENSHOT);
     await new Promise<number>((resolve) => setTimeout(resolve, CREATE_WINDOW_DELAY));
     ScreenshotManager.save().then(async (data) => {
       Log.showInfo(TAG, `ScreenshotManager.save data:${JSON.stringify(data)}`);
@@ -49,8 +50,11 @@ export class ScreenShotModel {
           format: 'image/jpeg',
           quality: OPTIONS_QUALITY,
         });
+      } else {
+        WindowMar.notifyScreenshotEvent(WindowMar.ScreenshotEventType.SYSTEM_SCREENSHOT_ABORT);
       }
     }).catch((err: BusinessError) => {
+      WindowMar.notifyScreenshotEvent(WindowMar.ScreenshotEventType.SYSTEM_SCREENSHOT);
       Log.showInfo(TAG, `ScreenshotManager.save err:${JSON.stringify(err)}`);
     });
   }
