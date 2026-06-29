@@ -29,7 +29,7 @@ const WINDOW_Y = 300;
 
 class ServiceExtAbility extends ServiceExtensionAbility {
   onCreate(want: Want): void {
-    Log.showInfo(TAG, 'api8New onCreate, want:' + want.abilityName);
+    Log.showInfo(TAG, 'api8New onCreate, want:' + want?.abilityName);
     globalThis.shotScreenContext = this.context;
     const windowConfig: windowManager.Configuration = {
       name: Constants.WIN_NAME,
